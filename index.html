@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -115,9 +115,13 @@
             from { transform: scale(0.9); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
         }
-        .modal-box img {
-            width: 100%; height: 280px; object-fit: cover;
-            display: block;
+        .modal-box .img-placeholder {
+            width: 100%; height: 120px;
+            background: linear-gradient(135deg, #cc2222, #ff4444);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
         }
         .modal-body { padding: 1.5rem; }
         .modal-body h3 { font-size: 1.3rem; color: #cc2222; margin-bottom: 0.4rem; }
@@ -166,7 +170,7 @@
 <!-- Modal -->
 <div class="modal-overlay" id="foodModal" onclick="closeModal(event)">
     <div class="modal-box" onclick="event.stopPropagation()">
-        <img id="modalImg" src="" alt="">
+        <div class="img-placeholder">🍜</div>
         <div class="modal-body">
             <h3 id="modalTitle"></h3>
             <div class="price-tag" id="modalPrice"></div>
@@ -301,62 +305,51 @@
 </footer>
 
 <script>
-// ===== 菜品数据 =====
-const dishes = {
-    "noodle-zhajiang": { img: "images/noodle-zhajiang.jpg", imgFallback: "images/gallery-01.jpg", desc: "精选五花肉手工剁碎，秘制酱料慢火炒制，肉臊干香浓郁。红汤麻辣过瘾，清汤鲜美醇厚，干拌酱香四溢。三种吃法，三种享受。" },
-    "noodle-wanza": { img: "images/noodle-wanza.jpg", imgFallback: "images/gallery-02.jpg", desc: "豌豆熬到起沙，杂酱炒到冒油，拌匀后每一根面条都裹满豌杂酱。豌豆的绵密+杂酱的咸香+面条的筋道，一口下去满满的幸福感。" },
-    "noodle-jiza": { img: "images/noodle-jiza.jpg", imgFallback: "images/gallery-01.jpg", desc: "新鲜鸡杂搭配老坛泡椒，猛火爆炒出酸辣锅气。面条吸饱了泡椒汤汁，酸辣鲜香，开胃又过瘾。" },
-    "noodle-beef": { img: "images/noodle-beef.jpg", imgFallback: "images/gallery-02.jpg", desc: "精选牛腩切大块，配以秘制香料包文火慢炖6小时。牛肉酥烂入味，汤头浓香醇厚，一碗下肚暖心暖胃。" },
-    "noodle-feichang": { img: "images/noodle-feichang.jpg", imgFallback: "images/gallery-01.jpg", desc: "肥肠处理得干干净净，先卤后烧，软糯Q弹。红汤浓郁麻辣，肥肠吸收了汤汁的精华，一口咬下去满嘴香。" },
-    "noodle-paigu": { img: "images/noodle-paigu.jpg", imgFallback: "images/gallery-02.jpg", desc: "排骨炖到轻轻一抿就脱骨，肉香四溢。红汤版汤浓味厚，干拌版酱香浓郁，两种吃法各有千秋。" },
-    "noodle-fanqie": { img: "images/noodle-fanqie.jpg", imgFallback: "images/gallery-01.jpg", desc: "新鲜番茄熬出红亮汤底，酸甜开胃。煎蛋金黄焦香，配上爽滑面条，清淡不寡淡，老人小孩都爱。" },
-    "noodle-suan": { img: "images/noodle-suan.jpg", imgFallback: "images/gallery-02.jpg", desc: "自腌老坛酸菜，酸爽脆嫩。红汤加辣椒提味，清汤喝原汁原味。素面中的经典，简单却让人回味。" },
-
-    "rice-tihua": { img: "images/rice-tihua.jpg", imgFallback: "gallery-03.jpg", desc: "猪蹄炖到软烂脱骨，芸豆绵密起沙，汤色奶白浓稠。配上一碗热米饭，是冬日里最温暖的慰藉。" },
-    "rice-niurou": { img: "images/rice-niurou.jpg", imgFallback: "gallery-04.jpg", desc: "土豆软糯入味，牛肉鲜香多汁，浓稠的酱汁浇在米饭上，每一口都是满足。" },
-    "rice-huangniu": { img: "images/rice-huangniu.jpg", imgFallback: "gallery-05.jpg", desc: "选用优质黄牛肉，猛火快炒锁住肉汁，搭配辣椒和香菜，锅气十足，下饭一流。" },
-    "rice-yuxiang": { img: "images/rice-yuxiang.jpg", imgFallback: "gallery-06.jpg", desc: "正宗鱼香肉丝，木耳+胡萝卜+肉丝，酸甜微辣，酱汁浓稠，经典川菜家常味。" },
-    "rice-qiezi": { img: "images/rice-qiezi.jpg", imgFallback: "gallery-04.jpg", desc: "茄子炸到软糯，肉沫炒到焦香，酱汁浓油赤酱，拌上米饭能吃两大碗。" },
-
-    "mixian-zhajiang": { img: "images/mixian-zhajiang.jpg", imgFallback: "gallery-01.jpg", desc: "猪骨熬制浓白汤底，配上秘制杂酱，米线爽滑细腻，汤鲜味美。" },
-    "mixian-jiza": { img: "images/mixian-jiza.jpg", imgFallback: "gallery-02.jpg", desc: "泡椒鸡杂的酸辣配上米线的爽滑，酸辣开胃，越吃越想吃。" },
-    "mixian-beef": { img: "images/mixian-beef.jpg", imgFallback: "gallery-01.jpg", desc: "红烧牛肉原汤做底，米线吸饱了牛肉汤汁的精华，每一口都是浓郁的肉香。" },
-    "mixian-feichang": { img: "images/mixian-feichang.jpg", imgFallback: "gallery-02.jpg", desc: "软糯肥肠配上滑嫩米线，红汤麻辣浓郁，重口味爱好者的心头好。" },
-    "mixian-suan": { img: "images/mixian-suan.jpg", imgFallback: "gallery-01.jpg", desc: "老坛酸菜熬煮的清汤米线，酸爽解腻，清爽又开胃，适合口味清淡的食客。" },
-    "mixian-suanlafen": { img: "images/mixian-suanlafen.jpg", imgFallback: "gallery-02.jpg", desc: "正宗重庆酸辣粉，红薯粉条Q弹爽滑，酸辣汤底够劲够味，配花生碎和香菜。" },
-    "mixian-zhajiangsl": { img: "images/mixian-zhajiangsl.jpg", imgFallback: "gallery-01.jpg", desc: "杂酱+酸辣粉的豪华组合，既有酸辣粉的酸爽，又有杂酱的醇厚，一碗两吃。" },
-
-    "chaoshou": { img: "images/chaoshou.jpg", imgFallback: "gallery-03.jpg", desc: "皮薄如纸，馅料鲜嫩，手工现包。红汤麻辣过瘾，清汤鲜美醇厚，干拌红油飘香。" },
-    "shuijiao": { img: "images/shuijiao.jpg", imgFallback: "gallery-04.jpg", desc: "手工水饺，皮Q馅大，一口一个满足。三种吃法任选，搭配蘸料更美味。" },
-
-    "saoshao-zhajiang": { img: "images/saoshao-zhajiang.jpg", imgFallback: "gallery-05.jpg", desc: "额外加一份秘制杂酱，让您的面更加浓郁香醇，肉食星人必选。" },
-    "saoshao-jiza": { img: "images/saoshao-jiza.jpg", imgFallback: "gallery-06.jpg", desc: "加一份酸辣泡椒鸡杂，给您的面增加一份过瘾的酸辣味。" },
-    "saoshao-beef": { img: "images/saoshao-beef.jpg", imgFallback: "gallery-05.jpg", desc: "加一份红烧牛肉，大口吃肉的快乐就是这么简单。" },
-    "saoshao-feichang": { img: "images/saoshao-feichang.jpg", imgFallback: "gallery-06.jpg", desc: "加一份软糯肥肠，让您的面更有滋味。" },
-
-    "snack-egg": { img: "images/snack-egg.jpg", imgFallback: "gallery-03.jpg", desc: "煎到两面金黄，蛋白焦脆蛋黄流心，面里加一个，直接提升一个档次。" },
-    "snack-cai": { img: "images/snack-cai.jpg", imgFallback: "gallery-04.jpg", desc: "新鲜时令蔬菜焯水，清爽脆嫩，搭配油腻的面食正好解腻。" },
-    "snack-daisi": { img: "images/snack-daisi.jpg", imgFallback: "gallery-05.jpg", desc: "鲜香海带丝汤，清淡暖胃，吃面前来一碗，舒畅。" },
-    "snack-kele": { img: "images/snack-kele.jpg", imgFallback: "gallery-06.jpg", desc: "冰镇可口可乐，吃辣必备，一口下去透心凉。" },
-    "snack-xuebi": { img: "images/snack-xuebi.jpg", imgFallback: "gallery-03.jpg", desc: "冰镇雪碧，柠檬清爽，解辣神器。" },
-    "snack-beer": { img: "images/snack-beer.jpg", imgFallback: "gallery-04.jpg", desc: "冰镇啤酒，面馆标配，一碗面一瓶酒，快意人生。" },
-
-    "xin-lianbai": { img: "images/xin-lianbai.jpg", imgFallback: "gallery-05.jpg", desc: "新鲜莲花白搭配回锅肉片，大火快炒，锅气十足，蔬菜清甜肉香浓郁。" },
-    "xin-dougan": { img: "images/xin-dougan.jpg", imgFallback: "gallery-06.jpg", desc: "豆干吸满了回锅肉的肉汁和酱香，口感Q弹有嚼劲，下饭神器。" },
-    "xin-tudou": { img: "images/xin-tudou.jpg", imgFallback: "gallery-05.jpg", desc: "家常土豆肉丝，土豆丝爽脆，肉丝嫩滑，简简单单却让人念念不忘。" },
-    "xin-douganrou": { img: "images/xin-douganrou.jpg", imgFallback: "gallery-06.jpg", desc: "豆干+肉丝的黄金搭配，香干有嚼劲，肉丝嫩滑，下饭一绝。" }
+// ===== 菜品描述数据 =====
+const dishDescs = {
+    "noodle-zhajiang": "精选五花肉手工剁碎，秘制酱料慢火炒制，肉臊干香浓郁。红汤麻辣过瘾，清汤鲜美醇厚，干拌酱香四溢。三种吃法，三种享受。",
+    "noodle-wanza": "豌豆熬到起沙，杂酱炒到冒油，拌匀后每一根面条都裹满豌杂酱。豌豆的绵密+杂酱的咸香+面条的筋道，一口下去满满的幸福感。",
+    "noodle-jiza": "新鲜鸡杂搭配老坛泡椒，猛火爆炒出酸辣锅气。面条吸饱了泡椒汤汁，酸辣鲜香，开胃又过瘾。",
+    "noodle-beef": "精选牛腩切大块，配以秘制香料包文火慢炖6小时。牛肉酥烂入味，汤头浓香醇厚，一碗下肚暖心暖胃。",
+    "noodle-feichang": "肥肠处理得干干净净，先卤后烧，软糯Q弹。红汤浓郁麻辣，肥肠吸收了汤汁的精华，一口咬下去满嘴香。",
+    "noodle-paigu": "排骨炖到轻轻一抿就脱骨，肉香四溢。红汤版汤浓味厚，干拌版酱香浓郁，两种吃法各有千秋。",
+    "noodle-fanqie": "新鲜番茄熬出红亮汤底，酸甜开胃。煎蛋金黄焦香，配上爽滑面条，清淡不寡淡，老人小孩都爱。",
+    "noodle-suan": "自腌老坛酸菜，酸爽脆嫩。红汤加辣椒提味，清汤喝原汁原味。素面中的经典，简单却让人回味。",
+    "rice-tihua": "猪蹄炖到软烂脱骨，芸豆绵密起沙，汤色奶白浓稠。配上一碗热米饭，是冬日里最温暖的慰藉。",
+    "rice-niurou": "土豆软糯入味，牛肉鲜香多汁，浓稠的酱汁浇在米饭上，每一口都是满足。",
+    "rice-huangniu": "选用优质黄牛肉，猛火快炒锁住肉汁，搭配辣椒和香菜，锅气十足，下饭一流。",
+    "rice-yuxiang": "正宗鱼香肉丝，木耳+胡萝卜+肉丝，酸甜微辣，酱汁浓稠，经典川菜家常味。",
+    "rice-qiezi": "茄子炸到软糯，肉沫炒到焦香，酱汁浓油赤酱，拌上米饭能吃两大碗。",
+    "mixian-zhajiang": "猪骨熬制浓白汤底，配上秘制杂酱，米线爽滑细腻，汤鲜味美。",
+    "mixian-jiza": "泡椒鸡杂的酸辣配上米线的爽滑，酸辣开胃，越吃越想吃。",
+    "mixian-beef": "红烧牛肉原汤做底，米线吸饱了牛肉汤汁的精华，每一口都是浓郁的肉香。",
+    "mixian-feichang": "软糯肥肠配上滑嫩米线，红汤麻辣浓郁，重口味爱好者的心头好。",
+    "mixian-suan": "老坛酸菜熬煮的清汤米线，酸爽解腻，清爽又开胃，适合口味清淡的食客。",
+    "mixian-suanlafen": "正宗重庆酸辣粉，红薯粉条Q弹爽滑，酸辣汤底够劲够味，配花生碎和香菜。",
+    "mixian-zhajiangsl": "杂酱+酸辣粉的豪华组合，既有酸辣粉的酸爽，又有杂酱的醇厚，一碗两吃。",
+    "chaoshou": "皮薄如纸，馅料鲜嫩，手工现包。红汤麻辣过瘾，清汤鲜美醇厚，干拌红油飘香。",
+    "shuijiao": "手工水饺，皮Q馅大，一口一个满足。三种吃法任选，搭配蘸料更美味。",
+    "saoshao-zhajiang": "额外加一份秘制杂酱，让您的面更加浓郁香醇，肉食星人必选。",
+    "saoshao-jiza": "加一份酸辣泡椒鸡杂，给您的面增加一份过瘾的酸辣味。",
+    "saoshao-beef": "加一份红烧牛肉，大口吃肉的快乐就是这么简单。",
+    "saoshao-feichang": "加一份软糯肥肠，让您的面更有滋味。",
+    "snack-egg": "煎到两面金黄，蛋白焦脆蛋黄流心，面里加一个，直接提升一个档次。",
+    "snack-cai": "新鲜时令蔬菜焯水，清爽脆嫩，搭配油腻的面食正好解腻。",
+    "snack-daisi": "鲜香海带丝汤，清淡暖胃，吃面前来一碗，舒畅。",
+    "snack-kele": "冰镇可口可乐，吃辣必备，一口下去透心凉。",
+    "snack-xuebi": "冰镇雪碧，柠檬清爽，解辣神器。",
+    "snack-beer": "冰镇啤酒，面馆标配，一碗面一瓶酒，快意人生。",
+    "xin-lianbai": "新鲜莲花白搭配回锅肉片，大火快炒，锅气十足，蔬菜清甜肉香浓郁。",
+    "xin-dougan": "豆干吸满了回锅肉的肉汁和酱香，口感Q弹有嚼劲，下饭神器。",
+    "xin-tudou": "家常土豆肉丝，土豆丝爽脆，肉丝嫩滑，简简单单却让人念念不忘。",
+    "xin-douganrou": "豆干+肉丝的黄金搭配，香干有嚼劲，肉丝嫩滑，下饭一绝。"
 };
 
 function showDish(name, price, brief, key) {
-    const data = dishes[key] || {};
-    const imgEl = document.getElementById("modalImg");
-    const fallback = data.imgFallback ? "images/" + data.imgFallback : "images/gallery-01.jpg";
-    imgEl.src = data.img || fallback;
-    imgEl.onerror = function() { this.src = fallback; };
     document.getElementById("modalTitle").textContent = name;
     const priceInfo = price ? "¥" + price : "";
     document.getElementById("modalPrice").textContent = priceInfo;
-    document.getElementById("modalDesc").textContent = data.desc || brief || "����Ʒ������ζ�����ˣ�";
+    document.getElementById("modalDesc").textContent = dishDescs[key] || brief || "����Ʒ������ζ�����ˣ�";
     document.getElementById("foodModal").classList.add("active");
     document.body.style.overflow = "hidden";
 }
