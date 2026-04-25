@@ -8,8 +8,8 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
-            background: #1a120b;
-            color: #f5e6d3;
+            background: #fff8f5;
+            color: #2d1f14;
             line-height: 1.6;
         }
 
@@ -22,24 +22,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(26, 18, 11, 0.9);
+            background: rgba(255,255,255,0.95);
             backdrop-filter: blur(12px);
             z-index: 100;
-            border-bottom: 1px solid rgba(245, 230, 211, 0.06);
+            border-bottom: 1px solid rgba(204,34,34,0.12);
         }
-        nav .logo {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #f5c842;
-        }
+        nav .logo { font-size: 1.3rem; font-weight: 700; color: #cc2222; }
         nav a {
-            color: #c9a87c;
-            text-decoration: none;
-            margin-left: 1.5rem;
-            font-size: 0.85rem;
-            transition: color 0.3s;
+            color: #666; text-decoration: none; margin-left: 1.5rem;
+            font-size: 0.85rem; transition: color 0.3s;
         }
-        nav a:hover { color: #f5c842; }
+        nav a:hover { color: #cc2222; }
         @media (max-width: 600px) {
             nav { padding: 0.6rem 1rem; }
             nav a { margin-left: 0.8rem; font-size: 0.75rem; }
@@ -47,135 +40,110 @@
 
         /* ===== Hero ===== */
         .hero {
-            height: 70vh;
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background:
-                radial-gradient(ellipse at 50% 60%, rgba(0,0,0,0.5), rgba(0,0,0,0.75)),
-                url('images/hero-bg.jpg') center/cover fixed;
-            position: relative;
+            height: 70vh; min-height: 400px;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            background: linear-gradient(135deg, rgba(200,30,30,0.88) 0%, rgba(160,20,20,0.93) 100%),
+                        url('images/hero-bg.jpg') center/cover fixed;
         }
         .hero h1 {
-            font-size: clamp(2.5rem, 7vw, 5rem);
-            letter-spacing: 0.15em;
-            font-weight: 900;
-            background: linear-gradient(to right, #f5c842, #e8893a);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: clamp(2.5rem,7vw,5rem); letter-spacing: 0.15em;
+            font-weight: 900; color: #fff;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
-        .hero .sub {
-            font-size: 1.2rem;
-            color: #c9a87c;
-            margin-top: 0.6rem;
-            letter-spacing: 0.3em;
-        }
-        .hero .tagline {
-            margin-top: 1.5rem;
-            font-size: 1rem;
-            color: #a08060;
-        }
+        .hero .sub { font-size: 1.2rem; color: #ffdddd; margin-top: 0.6rem; letter-spacing: 0.3em; }
+        .hero .tagline { margin-top: 1.5rem; font-size: 1rem; color: #ffbbbb; }
 
         /* ===== Sections ===== */
-        section {
-            padding: 3.5rem 1.5rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        section h2 {
-            font-size: 1.8rem;
-            text-align: center;
-            margin-bottom: 0.3rem;
-            color: #f5c842;
-        }
-        section .divider {
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(to right, #f5c842, #e8893a);
-            margin: 0.6rem auto 2rem;
-            border-radius: 2px;
-        }
+        section { padding: 3.5rem 1.5rem; max-width: 1000px; margin: 0 auto; }
+        section h2 { font-size: 1.8rem; text-align: center; margin-bottom: 0.3rem; color: #cc2222; }
+        section .divider { width: 50px; height: 3px; background: #cc2222; margin: 0.6rem auto 2rem; border-radius: 2px; }
 
-        /* ===== Menu Section ===== */
-        .menu-category {
-            margin-bottom: 2.5rem;
-        }
+        /* ===== Menu ===== */
+        .menu-category { margin-bottom: 2.5rem; }
         .menu-category h3 {
-            font-size: 1.2rem;
-            color: #e8893a;
-            border-left: 4px solid #f5c842;
-            padding-left: 0.8rem;
+            font-size: 1.15rem; color: #cc2222;
+            border-left: 4px solid #cc2222; padding-left: 0.8rem;
             margin-bottom: 1rem;
+            background: linear-gradient(to right, rgba(204,34,34,0.05), transparent);
+            padding: 0.5rem 0.8rem; border-radius: 0 6px 6px 0;
         }
-        .menu-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+        .menu-table { width: 100%; border-collapse: collapse; }
         .menu-table th {
-            text-align: left;
-            color: #a08060;
-            font-weight: 400;
-            font-size: 0.8rem;
-            padding: 0.3rem 0.5rem;
-            border-bottom: 1px solid rgba(245,230,211,0.08);
+            text-align: left; color: #999; font-weight: 400;
+            font-size: 0.8rem; padding: 0.3rem 0.5rem;
+            border-bottom: 1px solid rgba(204,34,34,0.1);
         }
         .menu-table td {
-            padding: 0.45rem 0.5rem;
-            border-bottom: 1px solid rgba(245,230,211,0.04);
+            padding: 0.5rem 0.5rem;
+            border-bottom: 1px solid rgba(204,34,34,0.04);
             font-size: 0.95rem;
         }
-        .menu-table .name { color: #f5e6d3; }
-        .menu-table .name small {
-            color: #a08060;
-            font-size: 0.8rem;
-            font-weight: 400;
+        .menu-table .name { color: #2d1f14; cursor: pointer; position: relative; }
+        .menu-table .name:hover { color: #cc2222; }
+        .menu-table .name::after {
+            content: "👆"; font-size: 0.7rem; opacity: 0.4;
+            margin-left: 0.4rem; transition: opacity 0.2s;
         }
-        .menu-table .price {
-            color: #f5c842;
-            font-weight: 600;
-            white-space: nowrap;
-            text-align: right;
+        .menu-table .name:hover::after { opacity: 1; }
+        .menu-table .name small { color: #999; font-size: 0.8rem; font-weight: 400; }
+        .menu-table .price { color: #cc2222; font-weight: 700; white-space: nowrap; text-align: right; }
+        .menu-table .price small { color: #999; font-weight: 400; font-size: 0.8rem; }
+        .menu-table .note { color: #999; font-size: 0.8rem; padding: 0.5rem; text-align: center; font-style: italic; }
+
+        /* ===== Modal ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
         }
-        .menu-table .price small {
-            color: #a08060;
-            font-weight: 400;
-            font-size: 0.8rem;
+        .modal-overlay.active { display: flex; }
+        .modal-box {
+            background: #fff;
+            border-radius: 16px;
+            max-width: 500px;
+            width: 100%;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: modalIn 0.25s ease;
         }
-        .menu-table .sub-item td {
-            padding-left: 1.5rem;
-            font-size: 0.88rem;
+        @keyframes modalIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
-        .menu-table .note {
-            color: #806040;
-            font-size: 0.8rem;
-            padding: 0.5rem;
-            text-align: center;
-            font-style: italic;
+        .modal-box img {
+            width: 100%; height: 280px; object-fit: cover;
+            display: block;
         }
+        .modal-body { padding: 1.5rem; }
+        .modal-body h3 { font-size: 1.3rem; color: #cc2222; margin-bottom: 0.4rem; }
+        .modal-body .price-tag { color: #cc2222; font-weight: 700; font-size: 1.1rem; }
+        .modal-body .desc { color: #666; font-size: 0.9rem; margin-top: 0.6rem; line-height: 1.7; }
+        .modal-close {
+            display: block;
+            width: 100%; padding: 0.8rem;
+            background: #cc2222; color: #fff;
+            border: none; font-size: 1rem;
+            cursor: pointer; transition: background 0.2s;
+        }
+        .modal-close:hover { background: #a01818; }
 
         /* ===== Contact ===== */
         .contact-info {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-            text-align: center;
+            gap: 1.5rem; text-align: center;
         }
         .contact-info .item { padding: 1rem; }
         .contact-info .icon { font-size: 1.8rem; margin-bottom: 0.3rem; }
-        .contact-info .val { color: #f5e6d3; font-size: 0.95rem; }
-        .contact-info .label { color: #a08060; font-size: 0.8rem; }
+        .contact-info .val { color: #2d1f14; font-size: 0.95rem; font-weight: 600; }
+        .contact-info .label { color: #999; font-size: 0.8rem; }
 
-        footer {
-            text-align: center;
-            padding: 1.5rem;
-            border-top: 1px solid rgba(245, 230, 211, 0.06);
-            color: #604830;
-            font-size: 0.8rem;
-        }
+        footer { text-align: center; padding: 1.5rem; border-top: 1px solid rgba(204,34,34,0.1); color: #999; font-size: 0.8rem; }
     </style>
 </head>
 <body>
@@ -195,6 +163,19 @@
     <p class="tagline">三两免费加面 · 地道成都味</p>
 </section>
 
+<!-- Modal -->
+<div class="modal-overlay" id="foodModal" onclick="closeModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+        <img id="modalImg" src="" alt="">
+        <div class="modal-body">
+            <h3 id="modalTitle"></h3>
+            <div class="price-tag" id="modalPrice"></div>
+            <div class="desc" id="modalDesc"></div>
+        </div>
+        <button class="modal-close" onclick="closeModal()">关闭</button>
+    </div>
+</div>
+
 <!-- Menu -->
 <section id="menu">
     <h2>菜单</h2>
@@ -205,14 +186,14 @@
         <h3>🍜 面类（三两免费加面）</h3>
         <table class="menu-table">
             <tr><th class="name">品名</th><th class="price">一两</th><th class="price">二两</th><th class="price">三两</th></tr>
-            <tr><td class="name">老成都杂酱面 <small>红汤/清汤/干拌</small></td><td class="price">10</td><td class="price">12</td><td class="price">14</td></tr>
-            <tr><td class="name">招牌豌杂面 <small>红汤/清汤/干拌</small></td><td class="price">11</td><td class="price">13</td><td class="price">15</td></tr>
-            <tr><td class="name">泡椒鸡杂面 <small>红汤/干拌</small></td><td class="price">11</td><td class="price">13</td><td class="price">15</td></tr>
-            <tr><td class="name">红烧牛肉面 <small>红汤</small></td><td class="price">11</td><td class="price">13</td><td class="price">15</td></tr>
-            <tr><td class="name">红烧肥肠面 <small>红汤</small></td><td class="price">11</td><td class="price">13</td><td class="price">15</td></tr>
-            <tr><td class="name">红烧排骨面 <small>红汤/干拌</small></td><td class="price">11</td><td class="price">13</td><td class="price">15</td></tr>
-            <tr><td class="name">番茄煎蛋面 <small>清汤</small></td><td class="price">10</td><td class="price">12</td><td class="price">14</td></tr>
-            <tr><td class="name">经典酸菜面 <small>红汤/清汤</small></td><td class="price">8</td><td class="price">10</td><td class="price">12</td></tr>
+            <tr><td class="name" onclick='showDish("老成都杂酱面","10/12/14元","红汤/清汤/干拌三种口味，地道成都杂酱，肉臊浓郁，面条劲道。","noodle-zhajiang")'>老成都杂酱面 <small>红汤/清汤/干拌</small></td><td class="price">10</td><td class="price">12</td><td class="price">14</td></tr>
+            <tr><td class="name" onclick='showDish("招牌豌杂面","11/13/15元","软烂豌豆+秘制杂酱，豌杂面天花板，每一口都是满足感。","noodle-wanza")'>招牌豌杂面 <small>红汤/清汤/干拌</small></td><td class="price">11</td><td class="price">13</td><td class="price">15</td></tr>
+            <tr><td class="name" onclick='showDish("泡椒鸡杂面","11/13/15元","酸辣泡椒搭配新鲜鸡杂，开胃过瘾，越吃越想吃。","noodle-jiza")'>泡椒鸡杂面 <small>红汤/干拌</small></td><td class="price">11</td><td class="price">13</td><td class="price">15</td></tr>
+            <tr><td class="name" onclick='showDish("红烧牛肉面","11/13/15元","大块牛腩文火慢炖，汤浓肉烂，一碗下去暖心暖胃。","noodle-beef")'>红烧牛肉面 <small>红汤</small></td><td class="price">11</td><td class="price">13</td><td class="price">15</td></tr>
+            <tr><td class="name" onclick='showDish("红烧肥肠面","11/13/15元","肥肠处理得干干净净，软糯入味，经典的成都老味道。","noodle-feichang")'>红烧肥肠面 <small>红汤</small></td><td class="price">11</td><td class="price">13</td><td class="price">15</td></tr>
+            <tr><td class="name" onclick='showDish("红烧排骨面","11/13/15元","排骨炖到脱骨，肉香四溢，红汤/干拌都好吃。","noodle-paigu")'>红烧排骨面 <small>红汤/干拌</small></td><td class="price">11</td><td class="price">13</td><td class="price">15</td></tr>
+            <tr><td class="name" onclick='showDish("番茄煎蛋面","10/12/14元","酸甜番茄汤底配上金黄煎蛋，清淡又鲜美，老少皆宜。","noodle-fanqie")'>番茄煎蛋面 <small>清汤</small></td><td class="price">10</td><td class="price">12</td><td class="price">14</td></tr>
+            <tr><td class="name" onclick='showDish("经典酸菜面","8/10/12元","老坛酸菜熬汤，酸爽开胃，素面中的经典。","noodle-suan")'>经典酸菜面 <small>红汤/清汤</small></td><td class="price">8</td><td class="price">10</td><td class="price">12</td></tr>
         </table>
     </div>
 
@@ -220,11 +201,11 @@
     <div class="menu-category">
         <h3>🍚 米饭系列</h3>
         <table class="menu-table">
-            <tr><td class="name">老妈蹄花汤+米饭</td><td class="price">18</td></tr>
-            <tr><td class="name">土豆牛肉盖浇饭</td><td class="price">16</td></tr>
-            <tr><td class="name">小炒黄牛肉盖浇饭</td><td class="price">18</td></tr>
-            <tr><td class="name">鱼香肉丝盖浇饭</td><td class="price">14</td></tr>
-            <tr><td class="name">肉沫茄子盖浇饭</td><td class="price">14</td></tr>
+            <tr><td class="name" onclick='showDish("老妈蹄花汤+米饭","18元","芸豆炖猪蹄，汤白肉烂，配上米饭一碗不够。","rice-tihua")'>老妈蹄花汤+米饭</td><td class="price">18</td></tr>
+            <tr><td class="name" onclick='showDish("土豆牛肉盖浇饭","16元","软糯土豆+大块牛肉，浓稠酱汁浇在米饭上，绝配。","rice-niurou")'>土豆牛肉盖浇饭</td><td class="price">16</td></tr>
+            <tr><td class="name" onclick='showDish("小炒黄牛肉盖浇饭","18元","鲜嫩黄牛肉猛火快炒，锅气十足，下饭神器。","rice-huangniu")'>小炒黄牛肉盖浇饭</td><td class="price">18</td></tr>
+            <tr><td class="name" onclick='showDish("鱼香肉丝盖浇饭","14元","经典川菜鱼香味型，酸甜微辣，大人小孩都爱吃。","rice-yuxiang")'>鱼香肉丝盖浇饭</td><td class="price">14</td></tr>
+            <tr><td class="name" onclick='showDish("肉沫茄子盖浇饭","14元","软糯茄子+香浓肉沫，酱汁浸透米饭，简单又美味。","rice-qiezi")'>肉沫茄子盖浇饭</td><td class="price">14</td></tr>
         </table>
     </div>
 
@@ -233,13 +214,13 @@
         <h3>🍲 骨汤米线 / 苕粉</h3>
         <table class="menu-table">
             <tr><th class="name">品名</th><th class="price">小份</th><th class="price">大份</th></tr>
-            <tr><td class="name">杂酱米线 <small>红汤/清汤</small></td><td class="price">12</td><td class="price">14</td></tr>
-            <tr><td class="name">泡椒鸡杂米线 <small>红汤</small></td><td class="price">13</td><td class="price">15</td></tr>
-            <tr><td class="name">红烧牛肉米线 <small>红汤</small></td><td class="price">13</td><td class="price">15</td></tr>
-            <tr><td class="name">红烧肥肠米线 <small>红汤</small></td><td class="price">13</td><td class="price">15</td></tr>
-            <tr><td class="name">酸菜米线 <small>红汤/清汤</small></td><td class="price">10</td><td class="price">12</td></tr>
-            <tr><td class="name">重庆酸辣粉 <small>红汤</small></td><td class="price">11</td><td class="price">13</td></tr>
-            <tr><td class="name">杂酱酸辣粉 <small>红汤</small></td><td class="price">13</td><td class="price">15</td></tr>
+            <tr><td class="name" onclick='showDish("杂酱米线","12/14元","骨汤打底，杂酱提味，米线爽滑，汤都喝光。","mixian-zhajiang")'>杂酱米线 <small>红汤/清汤</small></td><td class="price">12</td><td class="price">14</td></tr>
+            <tr><td class="name" onclick='showDish("泡椒鸡杂米线","13/15元","酸辣泡椒鸡杂配上滑嫩米线，一口上瘾。","mixian-jiza")'>泡椒鸡杂米线 <small>红汤</small></td><td class="price">13</td><td class="price">15</td></tr>
+            <tr><td class="name" onclick='showDish("红烧牛肉米线","13/15元","红烧牛肉原汤配米线，肉香和米线完美融合。","mixian-beef")'>红烧牛肉米线 <small>红汤</small></td><td class="price">13</td><td class="price">15</td></tr>
+            <tr><td class="name" onclick='showDish("红烧肥肠米线","13/15元","软糯肥肠配爽滑米线，重口味爱好者的最爱。","mixian-feichang")'>红烧肥肠米线 <small>红汤</small></td><td class="price">13</td><td class="price">15</td></tr>
+            <tr><td class="name" onclick='showDish("酸菜米线","10/12元","老坛酸菜熬汤，酸爽解腻，清爽又开胃。","mixian-suan")'>酸菜米线 <small>红汤/清汤</small></td><td class="price">10</td><td class="price">12</td></tr>
+            <tr><td class="name" onclick='showDish("重庆酸辣粉","11/13元","正宗重庆味道，酸辣够劲，粉条Q弹。","mixian-suanlafen")'>重庆酸辣粉 <small>红汤</small></td><td class="price">11</td><td class="price">13</td></tr>
+            <tr><td class="name" onclick='showDish("杂酱酸辣粉","13/15元","杂酱+酸辣粉的顶配组合，豪华版酸辣体验。","mixian-zhajiangsl")'>杂酱酸辣粉 <small>红汤</small></td><td class="price">13</td><td class="price">15</td></tr>
         </table>
     </div>
 
@@ -248,8 +229,8 @@
         <h3>🥟 抄手 / 水饺</h3>
         <table class="menu-table">
             <tr><th class="name">品名</th><th class="price">小份</th><th class="price">大份</th></tr>
-            <tr><td class="name">抄手 <small>红汤/清汤/干拌</small></td><td class="price">12</td><td class="price">15</td></tr>
-            <tr><td class="name">水饺 <small>红汤/清汤/干拌</small></td><td class="price">12</td><td class="price">15</td></tr>
+            <tr><td class="name" onclick='showDish("抄手","12/15元","皮薄馅嫩，红汤麻辣/清汤鲜美/干拌香浓，怎么吃都好吃。","chaoshou")'>抄手 <small>红汤/清汤/干拌</small></td><td class="price">12</td><td class="price">15</td></tr>
+            <tr><td class="name" onclick='showDish("水饺","12/15元","现包手工水饺，馅料饱满，一口一个满足。","shuijiao")'>水饺 <small>红汤/清汤/干拌</small></td><td class="price">12</td><td class="price">15</td></tr>
         </table>
     </div>
 
@@ -257,10 +238,10 @@
     <div class="menu-category">
         <h3>🥩 加臊子</h3>
         <table class="menu-table">
-            <tr><td class="name">加杂酱</td><td class="price">10</td></tr>
-            <tr><td class="name">加泡椒鸡杂</td><td class="price">12</td></tr>
-            <tr><td class="name">加红烧牛肉</td><td class="price">12</td></tr>
-            <tr><td class="name">加红烧肥肠</td><td class="price">12</td></tr>
+            <tr><td class="name" onclick='showDish("加杂酱","10元","秘制杂酱加量，满足你的肉食胃。","saoshao-zhajiang")'>加杂酱</td><td class="price">10</td></tr>
+            <tr><td class="name" onclick='showDish("加泡椒鸡杂","12元","酸辣泡椒鸡杂加量，过瘾加倍。","saoshao-jiza")'>加泡椒鸡杂</td><td class="price">12</td></tr>
+            <tr><td class="name" onclick='showDish("加红烧牛肉","12元","大块红烧牛肉加量，大口吃肉。","saoshao-beef")'>加红烧牛肉</td><td class="price">12</td></tr>
+            <tr><td class="name" onclick='showDish("加红烧肥肠","12元","软糯肥肠加量，肥肠爱好者必加。","saoshao-feichang")'>加红烧肥肠</td><td class="price">12</td></tr>
         </table>
     </div>
 
@@ -268,12 +249,12 @@
     <div class="menu-category">
         <h3>🥤 小吃饮品</h3>
         <table class="menu-table">
-            <tr><td class="name">煎蛋</td><td class="price">3</td></tr>
-            <tr><td class="name">烫菜叶</td><td class="price">3</td></tr>
-            <tr><td class="name">带丝汤</td><td class="price">3</td></tr>
-            <tr><td class="name">凉可乐</td><td class="price">5</td></tr>
-            <tr><td class="name">凉雪碧</td><td class="price">5</td></tr>
-            <tr><td class="name">啤酒</td><td class="price">5</td></tr>
+            <tr><td class="name" onclick='showDish("煎蛋","3元","金黄酥脆，面里加一个更有灵魂。","snack-egg")'>煎蛋</td><td class="price">3</td></tr>
+            <tr><td class="name" onclick='showDish("烫菜叶","3元","新鲜时蔬烫熟，清爽解腻，搭配面食一绝。","snack-cai")'>烫菜叶</td><td class="price">3</td></tr>
+            <tr><td class="name" onclick='showDish("带丝汤","3元","海带丝清汤，暖胃好喝。","snack-daisi")'>带丝汤</td><td class="price">3</td></tr>
+            <tr><td class="name" onclick='showDish("凉可乐","5元","冰镇可乐，吃辣必备。","snack-kele")'>凉可乐</td><td class="price">5</td></tr>
+            <tr><td class="name" onclick='showDish("凉雪碧","5元","冰镇雪碧，清爽解辣。","snack-xuebi")'>凉雪碧</td><td class="price">5</td></tr>
+            <tr><td class="name" onclick='showDish("啤酒","5元","冰镇啤酒，面馆标配。","snack-beer")'>啤酒</td><td class="price">5</td></tr>
         </table>
     </div>
 </section>
@@ -283,11 +264,11 @@
     <h2>新品推荐</h2>
     <div class="divider"></div>
     <table class="menu-table" style="max-width:500px;margin:0 auto;">
-        <tr><td class="name">莲白回锅</td><td class="price">15</td></tr>
-        <tr><td class="name">豆干回锅</td><td class="price">15</td></tr>
-        <tr><td class="name">土豆肉丝</td><td class="price">15</td></tr>
-        <tr><td class="name">豆干肉丝</td><td class="price">15</td></tr>
-        <tr><td class="name">红烧排骨面</td><td class="price small">11</td><td class="price small">13</td><td class="price small">15</td></tr>
+        <tr><td class="name" onclick='showDish("莲白回锅","15元","莲花白+回锅肉经典搭配，锅气十足。","xin-lianbai")'>莲白回锅</td><td class="price">15</td></tr>
+        <tr><td class="name" onclick='showDish("豆干回锅","15元","豆干吸满肉汁，回锅肉经典做法。","xin-dougan")'>豆干回锅</td><td class="price">15</td></tr>
+        <tr><td class="name" onclick='showDish("土豆肉丝","15元","家常土豆肉丝，简简单单的好味道。","xin-tudou")'>土豆肉丝</td><td class="price">15</td></tr>
+        <tr><td class="name" onclick='showDish("豆干肉丝","15元","豆干肉丝小炒，下饭神器。","xin-douganrou")'>豆干肉丝</td><td class="price">15</td></tr>
+        <tr><td class="name" onclick='showDish("红烧排骨面","11/13/15元","排骨炖到脱骨，面条劲道入味，新品重磅推荐。","noodle-paigu")'>红烧排骨面</td><td class="price small">11</td><td class="price small">13</td><td class="price small">15</td></tr>
         <tr><td class="note">所有价格单位为元</td></tr>
     </table>
 </section>
@@ -318,6 +299,75 @@
 <footer>
     © 2026 伟伟杂酱面 · 电话 17380676180 · 老成都味道 🍜
 </footer>
+
+<script>
+// ===== 菜品数据 =====
+const dishes = {
+    "noodle-zhajiang": { img: "images/noodle-zhajiang.jpg", imgFallback: "images/gallery-01.jpg", desc: "精选五花肉手工剁碎，秘制酱料慢火炒制，肉臊干香浓郁。红汤麻辣过瘾，清汤鲜美醇厚，干拌酱香四溢。三种吃法，三种享受。" },
+    "noodle-wanza": { img: "images/noodle-wanza.jpg", imgFallback: "images/gallery-02.jpg", desc: "豌豆熬到起沙，杂酱炒到冒油，拌匀后每一根面条都裹满豌杂酱。豌豆的绵密+杂酱的咸香+面条的筋道，一口下去满满的幸福感。" },
+    "noodle-jiza": { img: "images/noodle-jiza.jpg", imgFallback: "images/gallery-01.jpg", desc: "新鲜鸡杂搭配老坛泡椒，猛火爆炒出酸辣锅气。面条吸饱了泡椒汤汁，酸辣鲜香，开胃又过瘾。" },
+    "noodle-beef": { img: "images/noodle-beef.jpg", imgFallback: "images/gallery-02.jpg", desc: "精选牛腩切大块，配以秘制香料包文火慢炖6小时。牛肉酥烂入味，汤头浓香醇厚，一碗下肚暖心暖胃。" },
+    "noodle-feichang": { img: "images/noodle-feichang.jpg", imgFallback: "images/gallery-01.jpg", desc: "肥肠处理得干干净净，先卤后烧，软糯Q弹。红汤浓郁麻辣，肥肠吸收了汤汁的精华，一口咬下去满嘴香。" },
+    "noodle-paigu": { img: "images/noodle-paigu.jpg", imgFallback: "images/gallery-02.jpg", desc: "排骨炖到轻轻一抿就脱骨，肉香四溢。红汤版汤浓味厚，干拌版酱香浓郁，两种吃法各有千秋。" },
+    "noodle-fanqie": { img: "images/noodle-fanqie.jpg", imgFallback: "images/gallery-01.jpg", desc: "新鲜番茄熬出红亮汤底，酸甜开胃。煎蛋金黄焦香，配上爽滑面条，清淡不寡淡，老人小孩都爱。" },
+    "noodle-suan": { img: "images/noodle-suan.jpg", imgFallback: "images/gallery-02.jpg", desc: "自腌老坛酸菜，酸爽脆嫩。红汤加辣椒提味，清汤喝原汁原味。素面中的经典，简单却让人回味。" },
+
+    "rice-tihua": { img: "images/rice-tihua.jpg", imgFallback: "gallery-03.jpg", desc: "猪蹄炖到软烂脱骨，芸豆绵密起沙，汤色奶白浓稠。配上一碗热米饭，是冬日里最温暖的慰藉。" },
+    "rice-niurou": { img: "images/rice-niurou.jpg", imgFallback: "gallery-04.jpg", desc: "土豆软糯入味，牛肉鲜香多汁，浓稠的酱汁浇在米饭上，每一口都是满足。" },
+    "rice-huangniu": { img: "images/rice-huangniu.jpg", imgFallback: "gallery-05.jpg", desc: "选用优质黄牛肉，猛火快炒锁住肉汁，搭配辣椒和香菜，锅气十足，下饭一流。" },
+    "rice-yuxiang": { img: "images/rice-yuxiang.jpg", imgFallback: "gallery-06.jpg", desc: "正宗鱼香肉丝，木耳+胡萝卜+肉丝，酸甜微辣，酱汁浓稠，经典川菜家常味。" },
+    "rice-qiezi": { img: "images/rice-qiezi.jpg", imgFallback: "gallery-04.jpg", desc: "茄子炸到软糯，肉沫炒到焦香，酱汁浓油赤酱，拌上米饭能吃两大碗。" },
+
+    "mixian-zhajiang": { img: "images/mixian-zhajiang.jpg", imgFallback: "gallery-01.jpg", desc: "猪骨熬制浓白汤底，配上秘制杂酱，米线爽滑细腻，汤鲜味美。" },
+    "mixian-jiza": { img: "images/mixian-jiza.jpg", imgFallback: "gallery-02.jpg", desc: "泡椒鸡杂的酸辣配上米线的爽滑，酸辣开胃，越吃越想吃。" },
+    "mixian-beef": { img: "images/mixian-beef.jpg", imgFallback: "gallery-01.jpg", desc: "红烧牛肉原汤做底，米线吸饱了牛肉汤汁的精华，每一口都是浓郁的肉香。" },
+    "mixian-feichang": { img: "images/mixian-feichang.jpg", imgFallback: "gallery-02.jpg", desc: "软糯肥肠配上滑嫩米线，红汤麻辣浓郁，重口味爱好者的心头好。" },
+    "mixian-suan": { img: "images/mixian-suan.jpg", imgFallback: "gallery-01.jpg", desc: "老坛酸菜熬煮的清汤米线，酸爽解腻，清爽又开胃，适合口味清淡的食客。" },
+    "mixian-suanlafen": { img: "images/mixian-suanlafen.jpg", imgFallback: "gallery-02.jpg", desc: "正宗重庆酸辣粉，红薯粉条Q弹爽滑，酸辣汤底够劲够味，配花生碎和香菜。" },
+    "mixian-zhajiangsl": { img: "images/mixian-zhajiangsl.jpg", imgFallback: "gallery-01.jpg", desc: "杂酱+酸辣粉的豪华组合，既有酸辣粉的酸爽，又有杂酱的醇厚，一碗两吃。" },
+
+    "chaoshou": { img: "images/chaoshou.jpg", imgFallback: "gallery-03.jpg", desc: "皮薄如纸，馅料鲜嫩，手工现包。红汤麻辣过瘾，清汤鲜美醇厚，干拌红油飘香。" },
+    "shuijiao": { img: "images/shuijiao.jpg", imgFallback: "gallery-04.jpg", desc: "手工水饺，皮Q馅大，一口一个满足。三种吃法任选，搭配蘸料更美味。" },
+
+    "saoshao-zhajiang": { img: "images/saoshao-zhajiang.jpg", imgFallback: "gallery-05.jpg", desc: "额外加一份秘制杂酱，让您的面更加浓郁香醇，肉食星人必选。" },
+    "saoshao-jiza": { img: "images/saoshao-jiza.jpg", imgFallback: "gallery-06.jpg", desc: "加一份酸辣泡椒鸡杂，给您的面增加一份过瘾的酸辣味。" },
+    "saoshao-beef": { img: "images/saoshao-beef.jpg", imgFallback: "gallery-05.jpg", desc: "加一份红烧牛肉，大口吃肉的快乐就是这么简单。" },
+    "saoshao-feichang": { img: "images/saoshao-feichang.jpg", imgFallback: "gallery-06.jpg", desc: "加一份软糯肥肠，让您的面更有滋味。" },
+
+    "snack-egg": { img: "images/snack-egg.jpg", imgFallback: "gallery-03.jpg", desc: "煎到两面金黄，蛋白焦脆蛋黄流心，面里加一个，直接提升一个档次。" },
+    "snack-cai": { img: "images/snack-cai.jpg", imgFallback: "gallery-04.jpg", desc: "新鲜时令蔬菜焯水，清爽脆嫩，搭配油腻的面食正好解腻。" },
+    "snack-daisi": { img: "images/snack-daisi.jpg", imgFallback: "gallery-05.jpg", desc: "鲜香海带丝汤，清淡暖胃，吃面前来一碗，舒畅。" },
+    "snack-kele": { img: "images/snack-kele.jpg", imgFallback: "gallery-06.jpg", desc: "冰镇可口可乐，吃辣必备，一口下去透心凉。" },
+    "snack-xuebi": { img: "images/snack-xuebi.jpg", imgFallback: "gallery-03.jpg", desc: "冰镇雪碧，柠檬清爽，解辣神器。" },
+    "snack-beer": { img: "images/snack-beer.jpg", imgFallback: "gallery-04.jpg", desc: "冰镇啤酒，面馆标配，一碗面一瓶酒，快意人生。" },
+
+    "xin-lianbai": { img: "images/xin-lianbai.jpg", imgFallback: "gallery-05.jpg", desc: "新鲜莲花白搭配回锅肉片，大火快炒，锅气十足，蔬菜清甜肉香浓郁。" },
+    "xin-dougan": { img: "images/xin-dougan.jpg", imgFallback: "gallery-06.jpg", desc: "豆干吸满了回锅肉的肉汁和酱香，口感Q弹有嚼劲，下饭神器。" },
+    "xin-tudou": { img: "images/xin-tudou.jpg", imgFallback: "gallery-05.jpg", desc: "家常土豆肉丝，土豆丝爽脆，肉丝嫩滑，简简单单却让人念念不忘。" },
+    "xin-douganrou": { img: "images/xin-douganrou.jpg", imgFallback: "gallery-06.jpg", desc: "豆干+肉丝的黄金搭配，香干有嚼劲，肉丝嫩滑，下饭一绝。" }
+};
+
+function showDish(name, price, brief, key) {
+    const data = dishes[key] || {};
+    const imgEl = document.getElementById("modalImg");
+    const fallback = data.imgFallback ? "images/" + data.imgFallback : "images/gallery-01.jpg";
+    imgEl.src = data.img || fallback;
+    imgEl.onerror = function() { this.src = fallback; };
+    document.getElementById("modalTitle").textContent = name;
+    document.getElementById("
+    const priceInfo = price ? "��" + price : "";
+    document.getElementById("modalPrice").textContent = priceInfo;
+    document.getElementById("modalDesc").textContent = data.desc || brief || "����Ʒ������ζ�����ˣ�";
+    document.getElementById("foodModal").classList.add("active");
+    document.body.style.overflow = "hidden";
+}
+
+function closeModal(e) {
+    if (e && e.target !== e.currentTarget && e.target.tagName !== "BUTTON") return;
+    document.getElementById("foodModal").classList.remove("active");
+    document.body.style.overflow = "";
+}
+</script>
 
 </body>
 </html>
