@@ -22,19 +22,17 @@
             align-items: center;
             text-align: center;
             background:
-                radial-gradient(ellipse at 50% 60%, rgba(200, 100, 30, 0.15), transparent 70%),
-                linear-gradient(135deg, #1a120b 0%, #2d1f14 100%);
+                radial-gradient(ellipse at 50% 60%, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.75)),
+                url('https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=1600&q=80') center/cover fixed;
             position: relative;
             overflow: hidden;
         }
         .hero::before {
-            content: "🍜";
-            font-size: 160px;
-            opacity: 0.08;
+            content: "";
             position: absolute;
-            top: 5%;
-            right: 5%;
-            transform: rotate(15deg);
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1626804475298-6eb522ec339f?w=1200&q=80') center/cover;
+            opacity: 0.15;
         }
         .hero h1 {
             font-size: clamp(3rem, 8vw, 6rem);
@@ -128,6 +126,11 @@
             color: #c9a87c;
             font-size: 1.05rem;
         }
+        .about-img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+        }
         .about-stats {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -173,6 +176,25 @@
         .menu-item .desc { color: #a08060; font-size: 0.9rem; margin: 0.5rem 0; }
         .menu-item .price { color: #f5c842; font-weight: 700; font-size: 1.1rem; }
         .menu-item .price small { color: #a08060; font-weight: 400; font-size: 0.8rem; }
+
+        /* ===== Gallery ===== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .gallery-grid img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 14px;
+            border: 1px solid rgba(245, 230, 211, 0.08);
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+        .gallery-grid img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(245, 200, 66, 0.15);
+        }
 
         /* ===== Testimonials ===== */
         .testi-grid {
@@ -226,6 +248,7 @@
     <div>
         <a href="#about">关于</a>
         <a href="#menu">菜单</a>
+        <a href="#gallery">美食</a>
         <a href="#reviews">口碑</a>
         <a href="#contact">联系</a>
     </div>
@@ -253,6 +276,9 @@
                 面粉选河套雪花粉，牛肉用甘肃黄牛腱子，辣椒自己用石臼舂。
                 不省工序，不偷时间。
             </p>
+        </div>
+        <div>
+            <img class="about-img" src="https://images.unsplash.com/photo-1555126634-323283e090fa?w=600&q=80" alt="孙记招牌牛肉面">
         </div>
         <div class="about-stats">
             <div class="stat-card">
@@ -316,6 +342,20 @@
             <p class="desc">自制发酵，浓稠顺滑，解腻必备</p>
             <p class="price">¥8</p>
         </div>
+    </div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery">
+    <h2>店铺实拍</h2>
+    <div class="divider"></div>
+    <div class="gallery-grid">
+        <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=600&q=80" alt="手工拉面">
+        <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?w=600&q=80" alt="热气腾腾的牛肉面">
+        <img src="https://images.unsplash.com/photo-1552611052-33e04de1b100?w=600&q=80" alt="店内环境">
+        <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=600&q=80" alt="秘制酱料">
+        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=80" alt="配菜小碟">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" alt="菜品展示">
     </div>
 </section>
 
