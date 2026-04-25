@@ -354,10 +354,9 @@ function showDish(name, price, brief, key) {
     imgEl.src = data.img || fallback;
     imgEl.onerror = function() { this.src = fallback; };
     document.getElementById("modalTitle").textContent = name;
-    document.getElementById("
-    const priceInfo = price ? "£¤" + price : "";
+    const priceInfo = price ? "Â¥" + price : "";
     document.getElementById("modalPrice").textContent = priceInfo;
-    document.getElementById("modalDesc").textContent = data.desc || brief || "µ½µêÆ·³¢£¬ÃÀÎ¶²»µÈÈË£¡";
+    document.getElementById("modalDesc").textContent = data.desc || brief || "ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¶ï¿½ï¿½ï¿½ï¿½ï¿½Ë£ï¿½";
     document.getElementById("foodModal").classList.add("active");
     document.body.style.overflow = "hidden";
 }
